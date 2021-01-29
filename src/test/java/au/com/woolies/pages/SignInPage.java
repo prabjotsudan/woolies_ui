@@ -23,14 +23,17 @@ public class SignInPage extends BasePage{
 
     public void enterUsername(String userName){
         GenericMethods.sendKeys(emailInput, userName);
+        log.debug("Entered username {} for login", userName);
     }
 
     public void enterPassword(String password){
         GenericMethods.sendKeys(passwordInput, password);
+        log.debug("Entered password {} for login", password);
     }
 
     public void submit(){
         GenericMethods.clickElement(submitButton);
+        log.debug("Submitted credentials for login");
     }
 
 

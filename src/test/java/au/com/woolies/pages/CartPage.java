@@ -7,8 +7,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 
-public class SearchResultsPage extends BasePage{
-    private static final Logger log = LogManager.getLogger(SearchResultsPage.class);
+public class CartPage extends BasePage{
+    private static final Logger log = LogManager.getLogger(CartPage.class);
 
 
     @FindBy(xpath = "//ul[contains(@class,'product_list')]/li[1]")
@@ -16,7 +16,6 @@ public class SearchResultsPage extends BasePage{
 
     public void openFirstSearchResult(){
         GenericMethods.clickElement(firstSearchResult);
-        log.debug("Opened product details for searched product");
     }
 
 

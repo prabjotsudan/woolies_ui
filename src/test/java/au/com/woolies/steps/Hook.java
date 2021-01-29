@@ -34,7 +34,7 @@ public class Hook {
 
     @After()
     public void tearDown(Scenario scenario) {
-            DriverManager.quitDriver();
+            //DriverManager.quitDriver();
     }
 
     @AfterStep

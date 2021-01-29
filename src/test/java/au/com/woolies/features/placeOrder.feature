@@ -9,9 +9,9 @@ Feature: Verify that customer is able to place an order
     Given I search for a product and add it to cart
       | productName | colour      | size      | quantity      |
       | <P1_Name>   | <P1_Colour> | <P1_Size> | <P1_Quantity> |
-#    Then I verify that added product is there in cart
-#      | productName | colour      | size      | quantity      |
-#      | <P1_Name>   | <P1_Colour> | <P1_Size> | <P1_Quantity> |
+    Then I verify that added product is there in cart
+      | productName | colour      | size      | quantity      |
+      | <P1_Name>   | <P1_Colour> | <P1_Size> | <P1_Quantity> |
 #    And I search for a product and add it to cart
 #      | productName | colour      | size      | quantity      |
 #      | <P2_Name>   | <P2_Colour> | <P2_Size> | <P2_Quantity> |

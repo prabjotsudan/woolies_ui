@@ -7,6 +7,7 @@ import au.com.woolies.utils.PropertyReader;
 import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.Assert;
@@ -67,5 +68,11 @@ public class BaseStepDefs {
         searchResultsLib.openProductDetails();
         productDetailsLib.enterProductDetails(productQuantity, productSize, productColour);
         productDetailsLib.addToCart();
+    }
+
+    @Then("I verify that added product is there in cart")
+    public void iVerifyThatAddedProductIsThereInCart(DataTable data) {
+        List<Map<String, String>> dataToUse = data.asMaps(String.class, String.class);
+        headerLib.navigateToMyCart();
     }
 }
