@@ -1,13 +1,10 @@
 package au.com.woolies.steps;
 
 import au.com.woolies.businessLayers.*;
-import au.com.woolies.utils.DriverManager;
-import au.com.woolies.utils.GenericMethods;
 import au.com.woolies.utils.PropertyReader;
 import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
-import io.cucumber.java.en.Then;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.Assert;
@@ -25,17 +22,6 @@ public class BaseStepDefs {
     HeaderLib headerLib = new HeaderLib();
     SearchResultsLib searchResultsLib = new SearchResultsLib();
     ProductDetailsLib productDetailsLib = new ProductDetailsLib();
-    //BaseLib baselib = new BaseLib();
-
-    @Given("test can navigate to google.com")
-    public void test_can_navigate_to_google_com() {
-//        if (homepageLib.checkGoogle()){
-//            log.info("Test Passed");
-//        }
-//        else{
-//            Assert.fail("Test Failed");
-//        }
-    }
 
     @Given("I am on the homepage")
     public void iAmOnTheHomepae() {
@@ -70,9 +56,4 @@ public class BaseStepDefs {
         productDetailsLib.addToCart();
     }
 
-    @Then("I verify that added product is there in cart")
-    public void iVerifyThatAddedProductIsThereInCart(DataTable data) {
-        List<Map<String, String>> dataToUse = data.asMaps(String.class, String.class);
-        headerLib.navigateToMyCart();
-    }
 }

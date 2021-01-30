@@ -2,10 +2,7 @@ package au.com.woolies.businessLayers;
 
 
 import au.com.woolies.pages.HeaderPage;
-import au.com.woolies.pages.Homepage;
 import au.com.woolies.pages.SignInPage;
-import au.com.woolies.utils.DriverManager;
-import au.com.woolies.utils.GenericMethods;
 import au.com.woolies.utils.PropertyReader;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -20,6 +17,12 @@ public class SignInLib {
     SignInPage signInPage = new SignInPage();
     HeaderPage headerPage = new HeaderPage();
 
+    /**
+     * Function to login
+     * @param userName Username to be used for login
+     * @param password Password to be used for login
+     * @param customerName Customer name displayed in header after login
+     */
     public void signIn(String userName, String password, String customerName){
         signInPage.enterUsername(userName);
         signInPage.enterPassword(password);

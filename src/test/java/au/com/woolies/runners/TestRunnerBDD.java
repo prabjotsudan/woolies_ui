@@ -11,7 +11,7 @@ import org.junit.runner.RunWith;
                 "junit:target/cucumber-reports/Cucumber.xml"
         },
         features = {"src/test/java/au/com/woolies/features"},
-        tags = {"@placeOrder"},
+        tags = {"@smoke"},
         glue = "au/com/woolies/steps",
         monochrome = false
 )

@@ -3,14 +3,14 @@ package au.com.woolies.utils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.Assert;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.TimeoutException;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 
-import java.util.NoSuchElementException;
+
 
 public class GenericMethods {
     private static final Logger log = LogManager.getLogger(GenericMethods.class);
@@ -26,7 +26,6 @@ public class GenericMethods {
         DriverManager.get().manage().window().maximize();
     }
 
-
     public static void clickElement(WebElement element) {
         try {
             DriverManager.shortWait().until(ExpectedConditions.and(ExpectedConditions.visibilityOf(element),
@@ -41,7 +40,6 @@ public class GenericMethods {
             log.error("Exception raised in clickElement : ", e);
             Assert.fail("Failed to click the element");
         }
-
     }
 
     public static void sendKeys(WebElement element, String enterText) {
@@ -93,12 +91,6 @@ public class GenericMethods {
 
     public static void selectByValue(WebElement element, String enterText) {
         try {
-
-            //DriverManager.shortWait().until(ExpectedConditions.and(ExpectedConditions.visibilityOf(element),
-            //        ExpectedConditions.elementToBeClickable(element)));
-
-
-
             DriverManager.shortWait().until(ExpectedConditions.textToBePresentInElement(element, enterText));
             Select s = new Select(element);
             s.selectByVisibleText(enterText);
@@ -114,14 +106,24 @@ public class GenericMethods {
     }
 
     public static boolean assertElementIsDisplayed(WebElement element) {
-        DriverManager.mediumWait().until(ExpectedConditions.and(ExpectedConditions.visibilityOf(element)));
+        try {
+            DriverManager.mediumWait().until(ExpectedConditions.and(ExpectedConditions.visibilityOf(element)));
+            Assert.assertTrue(isDisplayed(element));
+        } catch (TimeoutException | NoSuchElementException e) {
 
-        Assert.assertTrue(isDisplayed(element));
+            log.error("Exception raised in assertElementIsDisplayed : ", e);
+            Assert.fail("The element is not present in the page");
+            return false;
+        } catch (Exception e) {
+
+            log.error("Exception raised in assertElementIsDisplayed : ", e);
+            Assert.fail("The element is not present in the page");
+            return false;
+        }
         return true;
     }
 
     public static boolean isDisplayed(WebElement element) {
-
         try {
             log.debug("Checking if element is displayed");
             element.isDisplayed();
@@ -134,8 +136,39 @@ public class GenericMethods {
         }
     }
 
+    public static String getPageTitle(){
+        try {
+            log.debug("Fetching page title");
+            String title = DriverManager.get().getTitle();
+            log.debug("Page title is {}", title);
+            return title;
+        } catch (Exception e) {
 
+            log.error("Exception raised in getPageTitle : ", e);
+            Assert.fail("Failed to fetch page title");
+            return null;
+        }
+    }
 
+    public static String getAttribute(WebElement element, String attributeName){
+        log.debug("Fetching '{}' attribute from webElement", attributeName);
+        String attribute = element.getAttribute(attributeName);
+        log.debug("Attribute value is '{}'", attribute);
+        return attribute;
+    }
 
+    public static void selectCheckbox(WebElement element) {
+        try {
+            element.click();
+        } catch (TimeoutException | NoSuchElementException e) {
+
+            log.error("Exception raised in selectCheckbox : ", e);
+            Assert.fail("The element is not present in the page to select");
+        } catch (Exception e) {
+
+            log.error("Exception raised in selectCheckbox : ", e);
+            Assert.fail("Failed to select checkbox");
+        }
+    }
 
 }

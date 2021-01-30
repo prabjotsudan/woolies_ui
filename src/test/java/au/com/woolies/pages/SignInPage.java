@@ -36,12 +36,4 @@ public class SignInPage extends BasePage{
         log.debug("Submitted credentials for login");
     }
 
-
-
-
-
-
-
-
-
 }

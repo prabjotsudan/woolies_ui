@@ -32,8 +32,6 @@ public class ProductDetailsPage extends BasePage{
     private WebElement closeSuccessPopUp;
 
 
-
-
     public void enterProductQuantity(String productQuantity){
 
         GenericMethods.clearElement(quantityInput);
@@ -64,10 +62,6 @@ public class ProductDetailsPage extends BasePage{
         log.info("Added product to cart");
 
     }
-
-//    public String getProductPrice(){
-//        return GenericMethods.getText(productPrice);
-//    }
 
 
 }

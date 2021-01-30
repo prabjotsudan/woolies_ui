@@ -46,8 +46,6 @@ public class DriverManager {
             caps.setCapability("browser_version", setupProperties.getProperty("BS.browser.version"));
             caps.setCapability("name", setupProperties.getProperty("BS.name")+" "+dtf.format(now));
 
-
-
             driver = new RemoteWebDriver(new URL(setupProperties.getProperty("BS.url")), caps);
         }
         else {

@@ -1,7 +1,6 @@
 package au.com.woolies.utils;
 
 import org.junit.Assert;
-
 import java.io.FileInputStream;
 import java.util.Properties;
 

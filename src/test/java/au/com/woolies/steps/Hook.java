@@ -27,14 +27,11 @@ public class Hook {
         log.info("***************** {} *****************",scenario.getName());
         // reportHook adds a hook to generate report at the end of execution
         this.reportHook();
-        String url = setupProperties.getProperty("homepageUrl");
-        //DriverManager.get().navigate().to(url);
-        //DriverManager.get().manage().window().maximize();
     }
 
     @After()
     public void tearDown(Scenario scenario) {
-            //DriverManager.quitDriver();
+        DriverManager.quitDriver();
     }
 
     @AfterStep
@@ -58,7 +55,6 @@ public class Hook {
             runOnce = true;
         }
     }
-
 
     public void captureAndEmbedScreenshotInReport(Scenario scenario){
         try {

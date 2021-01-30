@@ -30,8 +30,6 @@ public class HeaderPage extends BasePage{
     private WebElement navigationIndicator;
 
 
-
-
     public void clickSignInLink(){
         GenericMethods.clickElement(signInLink);
         log.debug("Clicked SignIn link from header");
@@ -65,19 +63,6 @@ public class HeaderPage extends BasePage{
         log.debug("Current page is '{}'", currentPageIndicator);
         return currentPageIndicator;
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 }
