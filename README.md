@@ -8,7 +8,7 @@ Technologies used:
   - Cucumber 
   
 ## Installation instructions:
-  1. Clone repo using 
+  1. Clone repo using https://github.com/prabjotsudan/woolies_ui.git
   2. Open the project in your IDE (Eclipse / intelliJ)
   3. You will see the following structure:
 ```
